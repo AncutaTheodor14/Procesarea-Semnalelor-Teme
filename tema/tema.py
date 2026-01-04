@@ -128,11 +128,11 @@ while True:
         print('Sunt la frame ul ', cnt)
         N_frame = frame.shape[0]
         M_frame = frame.shape[1]
-        MSE_limit = 12360
+        MSE_limit = 10
         current_MSE = 0
         k = 8
         X_ycbcr = cv2.cvtColor(frame, cv2.COLOR_BGR2YCrCb)
-        while current_MSE < MSE_limit and k >= 0:
+        while current_MSE < MSE_limit and k > 0:
             X_reconst = np.zeros((N_frame, M_frame, 3))
             for canale in range(3):
                 for i in range(0, N_frame // 8):
@@ -148,8 +148,8 @@ while True:
             X_reconst = cv2.cvtColor(X_reconst, cv2.COLOR_YCrCb2BGR)
 
             current_MSE = mse(X_reconst, frame)
-            print('Valoare MSE ', current_MSE) #observ ca MSE creste, exemplu primele 5 framuri:
-            #asa ca o sa pun valoarea maxima MSE admisa sa fie 111
+            print('Valoare MSE ', current_MSE) #observ ca MSE creste cu cat elimin frecvente mai mici, deci mai comune, mai multe
+            #range de la 2 la 21 aprox, o sa pun limita 10
             k-=1
         #normalizam
         out.write(X_reconst)
