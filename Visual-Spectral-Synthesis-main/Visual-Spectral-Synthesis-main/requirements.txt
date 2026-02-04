@@ -1,0 +1,19 @@
+# Core dependencies
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+opencv-python>=4.8.0
+matplotlib>=3.7.0
+pandas>=2.0.0
+
+# Audio processing (optional but recommended)
+librosa>=0.10.0
+soundfile>=0.12.0
+
+# Image processing enhancements
+scikit-image>=0.21.0
+Pillow>=10.0.0
+
+# Utilities
+tqdm>=4.65.0
+h5py==3.15.1
